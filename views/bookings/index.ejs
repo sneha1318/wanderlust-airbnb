@@ -1,0 +1,47 @@
+
+<% layout("layouts/boilerplate") %>
+<div class="container mt-4">
+  <h2 class="mb-4">My Bookings</h2>
+
+  <% if(bookings.length === 0){ %>
+    <p>No bookings yet</p>
+  <% } %>
+
+  <% bookings.forEach(b => { %>
+    <div class="card mb-4 p-3 shadow-sm">
+      <div class="row g-3 align-items-center">
+        
+        <!-- ✅ Image (reduced width) -->
+        <div class="col-md-4">
+          <img 
+            src="<%= b.listing.image.url %>" 
+            class="img-fluid rounded" 
+            style="height:180px; object-fit:cover; width:100%; justify-content: center;">
+        </div>
+
+        <!-- ✅ Content -->
+        <div class="col-md-8">
+          <h4><%= b.listing.title %></h4>
+          
+          <p class="mb-1"><b>From:</b> <%= b.from.toDateString() %></p>
+          <p class="mb-1"><b>To:</b> <%= b.to.toDateString() %></p>
+          <p class="mb-2"><b>Total Price:</b> ₹<%= b.totalPrice %></p>
+
+          <div class="d-flex gap-2 mt-2">
+
+            <!-- Edit Button -->
+            <a href="/bookings/<%= b._id %>/edit" class="btn btn-primary btn-sm">
+              Edit Booking
+            </a>
+
+          <!-- Cancel Button -->
+          <form action="/bookings/<%= b._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger btn-sm">Cancel Booking</button>
+          </form>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  <% }) %>
+</div>

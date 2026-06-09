@@ -1,0 +1,46 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow p-4" style="max-width: 500px; width: 100%; border-radius: 12px;">
+    
+    <h3 class="text-center mb-3">Edit Booking</h3>
+
+    <form action="/bookings/<%= booking._id %>?_method=PUT" method="POST">
+      
+      <!-- From Date -->
+      <div class="mb-3">
+        <label class="form-label">From</label>
+        <input 
+          type="date" 
+          name="from" 
+          class="form-control"
+          value="<%= booking.from.toISOString().split('T')[0] %>" 
+          min="<%= new Date().toISOString().split('T')[0] %>"
+          required>
+      </div>
+
+      <!-- To Date -->
+      <div class="mb-3">
+        <label class="form-label">To</label>
+        <input 
+          type="date" 
+          name="to" 
+          class="form-control"
+          value="<%= booking.to.toISOString().split('T')[0] %>" 
+          required>
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-success w-100">
+          Update Booking
+        </button>
+
+        <a href="/bookings/my" class="btn btn-secondary w-100">
+          Cancel
+        </a>
+      </div>
+
+    </form>
+  </div>
+</div>
