@@ -116,6 +116,10 @@ app.use("/bookings", bookingRoutes);
 app.use("/listing",listings);
 app.use("/listing/:id/review",reviews);
 app.use("/",users);
+app.get("/", (req, res) => {
+    res.redirect("/listing");
+});
+
 
 
 app.use((req, res, next) => {
