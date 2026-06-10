@@ -20,6 +20,8 @@ const reviews=require("./routes/review.js");
 const users=require("./routes/user.js");
 const session=require("express-session");
 const MongoStore = require("connect-mongo");
+
+console.log("MongoStore:", MongoStore);
 const flash=require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -50,13 +52,14 @@ main()
 async function main() {
     await mongoose.connect(db_url);
 }
-const store= MongoStore.create({
-       mongoUrl:db_url,
-       crypto:{
-        secret:process.env.SECRET,
-       },
-       touchAfter:24*3600,
-})
+
+const store = MongoStore.create({
+  mongoUrl: db_url,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
+});
 store.on("error",(err)=>{
     console.log("ERROR IN MONGO SESSION STORE",err);
 })
@@ -129,6 +132,11 @@ app.use((err,req,res,next)=>{
 })
 
 
-app.listen(8080,(req,res)=>{
-    console.log("app is listening");
-})
+// app.listen(8080,(req,res)=>{
+//     console.log("app is listening");
+// })
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`App is listening on port ${PORT}`);
+});
