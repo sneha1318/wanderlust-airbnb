@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node":"22.15.0"
+    "node": "22.15.0"
   },
   "name": "majorproj",
   "version": "1.0.0",
@@ -16,6 +16,7 @@
     "axios": "^1.17.0",
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
