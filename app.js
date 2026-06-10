@@ -113,12 +113,13 @@ app.use((req,res,next)=>{
 })
 app.use("/bookings", bookingRoutes);
 
-app.use("/listing",listings);
-app.use("/listing/:id/review",reviews);
-app.use("/",users);
 app.get("/", (req, res) => {
-    res.redirect("/listing");
+    return res.redirect("/listing");
 });
+
+app.use("/listing", listings);
+app.use("/listing/:id/review", reviews);
+app.use("/", users);
 
 
 
