@@ -26,6 +26,9 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
 
 const bookingRoutes = require("./routes/bookings");
+app.get("/", (req, res) => {
+    res.redirect("/listing");
+});
 
 
 app.set("view engine","ejs");
@@ -113,9 +116,7 @@ app.use((req,res,next)=>{
 })
 app.use("/bookings", bookingRoutes);
 
-app.get("/", (req, res) => {
-    return res.redirect("/listing");
-});
+
 
 app.use("/listing", listings);
 app.use("/listing/:id/review", reviews);
