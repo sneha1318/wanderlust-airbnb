@@ -19,9 +19,7 @@ const listings=require("./routes/listing.js");
 const reviews=require("./routes/review.js");
 const users=require("./routes/user.js");
 const session=require("express-session");
-const MongoStore = require("connect-mongo");
-
-console.log("MongoStore:", MongoStore);
+const { MongoStore } = require("connect-mongo");
 const flash=require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
